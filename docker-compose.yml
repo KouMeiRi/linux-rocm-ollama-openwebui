@@ -1,0 +1,39 @@
+services:
+  ollama:
+    image: ollama/ollama:rocm
+    container_name: ollama
+    restart: unless-stopped
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    environment:
+      - HSA_OVERRIDE_GFX_VERSION=10.3.0
+      - TZ=Asia/Tokyo
+    volumes:
+      - /path/to/your/ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+    networks:
+      - custom-ai-net
+
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:latest
+    container_name: openwebui
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Tokyo
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - /path/to/your/openwebui_config:/app/config
+      - /path/to/your/app_data:/data
+    ports:
+      - "3000:8080"
+    networks:
+      - custom-ai-net
+    depends_on:
+      - ollama
+
+networks:
+  custom-ai-net:
+    driver: bridge
+    name: custom-ai-net
