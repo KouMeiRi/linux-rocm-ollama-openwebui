@@ -84,7 +84,8 @@ Set to Asia/Tokyo by default. Adjust to your local timezone string if necessary.
 
 デフォルトで Asia/Tokyo に設定されています。必要に応じてお住まいの地域のタイムゾーン（例：UTC, America/New_York）に変更してください。
 
-<img width="1591" height="431" alt="2026-08-08 21-31-14" src="https://github.com/user-attachments/assets/c50bb367-ef61-4519-aaed-1e8c322af4f0" />
+<img width="1591" height="431" alt="demo" src="https://github.com/user-attachments/assets/f59547ec-a771-47e8-aad7-a91a2c47baf5" />
+
 
 ---
 
@@ -99,7 +100,7 @@ English: Replace hermes3:8b-llama3.1-q8_0 with any model tag available on Ollama
 
 日本語: hermes3:8b-llama3.1-q8_0 の部分を、利用したいモデル名（Ollama Library 上のタグ）に変更して実行してください。
 
-<img width="2560" height="1293" alt="2026-08-09 04-13-35" src="https://github.com/user-attachments/assets/08a3fccd-62fe-488c-b643-08072a73ce22" />
+<img width="2560" height="1293" alt="main" src="https://github.com/user-attachments/assets/c3c726f0-ad41-436f-a389-7eabee68de83" />
 
 
 
@@ -121,7 +122,8 @@ By default, Open WebUI triggers background LLM tasks after every message to gene
 
 Open WebUI の初期設定では、メッセージ送信ごとにバックグラウンドでタイトル・タグ・関連質問生成の推論タスクが自動運行されます。これらをオフにすることで余計な GPU リソース消費を抑え，ローカル環境（AMD ROCm）での推論応答速度を大幅に向上させることができます。
 
-<img width="1607" height="1075" alt="2026-08-08 21-32-30" src="https://github.com/user-attachments/assets/d7e241c7-4c19-4cea-96fa-c1dc7b31c07d" />
+<img width="1607" height="1075" alt="settings" src="https://github.com/user-attachments/assets/fc81c6e6-136a-4834-bc79-f3c5b0fb58e2" />
+
 
 
 
