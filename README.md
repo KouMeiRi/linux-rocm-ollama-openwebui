@@ -44,7 +44,7 @@ services:
       - OLLAMA_BASE_URL=http://ollama:11434
     volumes:
       - /path/to/your/openwebui_config:/app/config
-      - /path/to/your/app_data:/data
+      - /path/to/your/openwebui_data:/app/backend/data
     ports:
       - "3000:8080"
     networks:
@@ -68,9 +68,21 @@ The value 10.3.0 is configured for AMD RDNA2 GPUs (e.g., RX 6800 / RX 6700 XT). 
 
 2. Volume Paths (volumes)
 
-Replace /path/to/your/... with your actual host machine directories. Ensure the user running Docker has write permissions to these paths.
+Replace /path/to/your/... with your actual host directories.
+Ensure the Docker user has write permissions.
 
-/path/to/your/... の部分を、ホストマシンの実際のローカルディレクトリパスに書き換えてください。Docker を実行するユーザーに書込権限が付与されていることを確認してください。
+📌 Important Update (2024+ OpenWebUI versions)
+OpenWebUI no longer uses /data for backend storage.
+All persistent data (chat history, embeddings, uploads, vector DB, Whisper models) is stored under:
+```
+/app/backend/data
+```
+Therefore, the correct volume mapping is:
+```
+- /path/to/your/openwebui_data:/app/backend/data
+```
+旧バージョンで使用されていた /data は現在利用されません。
+チャット履歴・RAG・アップロードファイルなどの永続データは すべて /app/backend/data に保存されます。
 
 3. Network Configuration (custom-ai-net)
 
@@ -94,14 +106,13 @@ Set to Asia/Tokyo by default. Adjust to your local timezone string if necessary.
 To download and run LLM models inside the Ollama container, execute the following command:
 
 ```bash
-docker exec -it ollama ollama pull hermes3:8b-llama3.1-q8_0
+docker exec -it ollama ollama pull gemma4:12b
 ```
-English: Replace hermes3:8b-llama3.1-q8_0 with any model tag available on Ollama Library.
+English: Replace gemma4:12b with any model tag available on Ollama Library.
 
-日本語: hermes3:8b-llama3.1-q8_0 の部分を、利用したいモデル名（Ollama Library 上のタグ）に変更して実行してください。
+日本語: 「gemma4:12b」 の部分を、利用したいモデル名（Ollama Library 上のタグ）に変更して実行してください。
 
-<img width="2560" height="1293" alt="main" src="https://github.com/user-attachments/assets/c3c726f0-ad41-436f-a389-7eabee68de83" />
-
+<img width="2252" height="1288" alt="page" src="https://github.com/user-attachments/assets/e05dfd93-ed98-40bc-b403-4d688e62b1e5" />
 
 
 ⚡ Performance Optimization (Open WebUI Settings)
