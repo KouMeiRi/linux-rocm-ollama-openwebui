@@ -1,9 +1,9 @@
-# fedora-ollama-openwebui-AMDrocm
-# Local AI Agent Stack (Ollama + Open WebUI) with AMD ROCm on Fedora.
+# linux-docker-rocm-ollama-openwebui
+## Local LLM & Web UI Stack (Ollama + Open-WebUI) with AMD ROCm on Linux (Fedora, Ubuntu, Debian, etc.).
 
 *Updated: August 2026*
 
-This repository provides an optimized Docker Compose configuration for running a fully local AI agent stack (Ollama LLM engine + Open WebUI frontend) on **Fedora Linux**, utilizing **AMD GPU (ROCm) hardware acceleration**.
+This repository provides an optimized Docker Compose configuration for running a fully local AI agent stack (Ollama LLM engine + Open WebUI frontend) on **Linux distributions (Fedora, Ubuntu, Debian, etc.)**, utilizing **AMD GPU (ROCm) hardware acceleration**.
 
 ### Key Problems Solved
 - **ROCm Container Passthrough**: Configures Kernel Fusion Driver (`/dev/kfd`) and Render Direct Infrastructure (`/dev/dri`) for containerized AMD GPU support.
