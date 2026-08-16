@@ -27,6 +27,12 @@ services:
       - /dev/dri:/dev/dri
     environment:
       - HSA_OVERRIDE_GFX_VERSION=10.3.0
+      - OLLAMA_FLASH_ATTENTION=1
+      - OLLAMA_KV_CACHE_TYPE=q8_0
+      - GPU_MAX_ALLOC_PERCENT=100
+      - GPU_SINGLE_ALLOC_PERCENT=100
+      - OLLAMA_KEEP_ALIVE=5m
+      - OLLAMA_NUM_PARALLEL=2
       - TZ=Asia/Tokyo
     volumes:
       - /path/to/your/ollama_data:/root/.ollama
@@ -98,6 +104,24 @@ Set to Asia/Tokyo by default. Adjust to your local timezone string if necessary.
 
 <img width="1591" height="431" alt="demo" src="https://github.com/user-attachments/assets/f59547ec-a771-47e8-aad7-a91a2c47baf5" />
 
+5. 🚀 Ollama Runtime Optimizations (2026 features)
+
+These environment variables enable advanced inference optimizations in Ollama:
+
+| Variable | Description |
+|---|---|
+| `OLLAMA_FLASH_ATTENTION=1` | Enables flash attention for faster inference |
+| `OLLAMA_KV_CACHE_TYPE=q8_0` | Uses 8-bit quantized KV cache to reduce VRAM usage |
+| `GPU_MAX_ALLOC_PERCENT=100` | Allows ROCm to allocate up to 100% of GPU memory |
+| `GPU_SINGLE_ALLOC_PERCENT=100` | Allows single allocation to use full GPU memory |
+| `OLLAMA_KEEP_ALIVE=5m` | Keeps models loaded in VRAM for 5 minutes |
+| `OLLAMA_NUM_PARALLEL=2` | Allows up to 2 parallel inference requests |
+
+⚠️ **Warning**: `OLLAMA_NUM_PARALLEL=2` may reduce single-query speed. 
+If you prioritize fast individual responses over throughput, set this to `1`.
+
+⚠️ 注意: `OLLAMA_NUM_PARALLEL=2` は単一クエリの速度を低下させる可能性があります。
+スループットより個別応答速度を重視する場合は `1` に設定してください。
 
 ---
 
